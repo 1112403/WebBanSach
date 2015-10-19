@@ -11,6 +11,7 @@ namespace WedSiteBanSach.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Sach
     {
@@ -19,8 +20,9 @@ namespace WedSiteBanSach.Models
             this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
             this.ThamGias = new HashSet<ThamGia>();
         }
-    
+        
         public int MaSach { get; set; }
+        [Display(Name ="Tên sách")]
         public string TenSach { get; set; }
         public Nullable<decimal> GiaBan { get; set; }
         public string MoTa { get; set; }
