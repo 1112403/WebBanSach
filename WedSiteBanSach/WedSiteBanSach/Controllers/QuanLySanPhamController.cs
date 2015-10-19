@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WedSiteBanSach.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace WedSiteBanSach.Controllers
 {
@@ -12,10 +14,13 @@ namespace WedSiteBanSach.Controllers
         QuanLyBanSachEntities db = new QuanLyBanSachEntities();
         //
         // GET: /QuanLySanPham/
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            List<Sach> lstSach = new List<Sach>();
-            lstSach = db.Saches.ToList();
+            int pageSize = 10;
+            int pageNumber = page ?? 1;
+
+
+            PagedList.IPagedList<Sach> lstSach = db.Saches.OrderBy(n=>n.TenSach).ToPagedList(pageNumber,pageSize);
             return View(lstSach);
         }
 	}

@@ -1,55 +1,57 @@
-﻿@model IEnumerable<WedSiteBanSach.Models.Sach>
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model PagedList.IPagedList<WedSiteBanSach.Models.Sach>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
-
-<h2>Index</h2>
+<style>
+    table, td{
+        padding: 10px;
+    }
+</style>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table-hover">
+@{int i = 1;}
+<table class="table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MaSach)
+            STT
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TenSach)
+            @Html.DisplayNameFor(model => model.First().TenSach)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GiaBan)
+            @Html.DisplayNameFor(model => model.First().GiaBan)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MoTa)
+            @Html.DisplayNameFor(model => model.First().MoTa)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NgayCapNhat)
+            @Html.DisplayNameFor(model => model.First().NgayCapNhat)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AnhBia)
+            @Html.DisplayNameFor(model => model.First().AnhBia)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SoLuongTon)
+            @Html.DisplayNameFor(model => model.First().SoLuongTon)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaChuDe)
+            @Html.DisplayNameFor(model => model.First().MaChuDe)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaNXB)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Moi)
+            @Html.DisplayNameFor(model => model.First().MaNXB)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaSach)
-        </td>
+        <td>@i</td>
         <td>
             @Html.DisplayFor(modelItem => item.TenSach)
         </td>
@@ -63,19 +65,17 @@
             @Html.DisplayFor(modelItem => item.NgayCapNhat)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AnhBia)
+            @*@Html.DisplayFor(modelItem => item.AnhBia)*@
+            <img style="width:50px; height:50px" src="@Url.Content("~/HinhAnhSP/"+ item.AnhBia)"/>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SoLuongTon)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MaChuDe)
+            @Html.DisplayFor(modelItem => item.ChuDe.TenChuDe)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MaNXB)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Moi)
+            @Html.DisplayFor(modelItem => item.NhaXuatBan.TenNXB)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
@@ -83,6 +83,21 @@
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
+    i++;
 }
 
 </table>
+<div class="menuTrang">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", "QuanLySanPham", new {@page = page }))
+</div>
+<style>
+    .menuTrang {
+        text-align: center;
+    }
+
+        .menuTrang li {
+            display: inline;
+            color: red;
+        }
+</style>
