@@ -1,0 +1,42 @@
+﻿@using WedSiteBanSach.Models;
+@* Định nghĩa kiểu dữ liệu của model *@
+@model List<Sach>
+<h1 class="item-header">Sách mới</h1>
+@{
+    foreach (var item in Model)
+    {
+        <div class="activity-list-update">
+            <img src="@Url.Content("~/HinhAnhSP/" +@item.AnhBia)" alt="Image" width="50" height="70">
+            <p><strong>@item.TenSach</strong></p>
+            <p><a href="@Url.Action("xemChiTiet", new { @masach = @item.MaSach })">Xem chi tiết</a></p>
+            <div class="clear"></div>
+        </div>
+    }
+}
+
+
+
+@*<div class="activity-list-update">
+        <img src="http://lorempixel.com/50/50/" alt="Image">
+        <p><strong>Dennis The Dude</strong> updated his <a href="#">user profile</a>.</p>
+        <div class="clear"></div>
+    </div>
+
+    <div id="htmlcaption" class="nivo-html-caption">
+        <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
+    </div>
+    <div class="activity-list-update">
+        <img src="http://lorempixel.com/50/50/" alt="Image">
+        <p><strong>Abe Kobo</strong> uploaded a new file <a href="#">new-design.png</a></p>
+        <div class="clear"></div>
+    </div>
+
+    <div class="activity-list-update">
+        <img src="http://lorempixel.com/50/50/" alt="Image">
+        <p><strong>Abe Kobo</strong> uploaded a new file <a href="#">new-design.png</a></p>
+        <div class="clear"></div>
+    </div>*@
+
+<a href="#" class="item-footer green">
+    See all activity
+</a>

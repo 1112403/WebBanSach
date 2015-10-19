@@ -1,0 +1,42 @@
+﻿@using WedSiteBanSach.Models;
+
+@model List<Sach>
+<link href="~/Content/TrangChuCSS.css" rel="stylesheet" />
+@{
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+    ViewBag.Title = "Trang chủ";
+}
+
+
+
+<h2>Index</h2>
+<div id="divBody">
+    @{int i = 0;}
+    @{
+        foreach (var item in Model)
+        {
+            i++;
+            <div id="sanPham">
+                <div id="anhBia"><a href="@Url.Action("xemChiTiet", "Sach", new { @maSach = @item.MaSach })"><img src="@Url.Content("~/HinhAnhSP/" +@item.AnhBia)" /></a></div>
+                <div id="tenSach">@item.TenSach</div>
+                <div id="gia">Giá: @string.Format("{0:0,0} VND", @item.GiaBan)</div>
+                <div>
+                    @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSach = item.MaSach, @strURL = Request.Url }))
+                    {
+                        <div>
+                            <button type="submit" style="color:white; background-color:red">
+                                Mua hàng <i class="fa fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            if (i % 3 == 0)
+            {
+                <div style="clear:both"></div>
+            }
+        }
+
+    }
+</div>

@@ -1,0 +1,21 @@
+﻿@using WedSiteBanSach.Models;
+@model List<ChuDe>
+
+<div>
+    @{
+    foreach (var item in Model)
+    {
+        <a href="@Url.Action("sachTheoChuDe", new {@maChuDe = @item.MaChuDe })" class="button button-submit">@item.TenChuDe</a>
+    }
+}
+    </br>
+    <a href="#" class="button button-submit">Xem thêm ...</a>
+
+    @*<a href="#" class="button button-submit">This is a save button</a>
+
+    <a href="#" class="button">Button with a counter <span class="notification">22</span></a>
+
+    <a href="#" class="button button-and-icon">
+        <div><i class="icon-large icon-cog"></i></div>Button with an icon
+    </a>*@
+</div>

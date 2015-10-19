@@ -1,0 +1,54 @@
+﻿@using WedSiteBanSach.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Sach>
+
+<link href="~/Content/TrangChuCSS.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Sách theo chủ đề";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+<h2 style="text-align:center">@ViewBag.Sach</h2>
+<div id="divBody">
+    @{int i = 0;
+      string currMaChuDe = "";
+      }
+    @{
+        foreach (var item in Model)
+        {
+            i++;
+            <div id="sanPham">
+                <div id="anhBia"><img src="@Url.Content("~/HinhAnhSP/" +@item.AnhBia)" /></div>
+                <div id="tenSach">@item.TenSach</div>
+                <div id="gia">Giá: @item.GiaBan</div>
+            </div>
+            @*<div style="clear:both"></div>*@
+            if (i % 3 == 0)
+            {
+                <div style="clear:both"></div>
+            }
+            @*if (i % 2 == 0)
+                {
+                    <div style="clear:both"></div>
+                }*@
+            currMaChuDe = item.MaChuDe.ToString();
+        }
+
+    }
+</div>
+
+@* Link *@
+
+<div class="menuTrang">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("sachTheoChuDe", "ChuDe", new { @maChuDe =int.Parse(currMaChuDe), @page = page }))
+</div>
+<style>
+    .menuTrang {
+        text-align: center;
+    }
+   .menuTrang li {
+        display: inline;
+        color: red;
+    }
+</style>

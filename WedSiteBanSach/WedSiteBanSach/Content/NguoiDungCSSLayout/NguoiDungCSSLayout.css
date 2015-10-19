@@ -1,0 +1,71 @@
+﻿#bodi{
+    position: relative;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+}
+.DangKyDangNhap{
+    float:right;
+    margin-top: -1%;
+}
+.DangKyDangNhap a:hover{
+    text-decoration: none;
+    color: green;
+}
+.NavMenu li{
+    display: inline;
+    padding: 21px;
+    -moz-transition:all 0.5s ease-in;
+    -webkit-transition:all 0.5s ease-in;
+}
+.NavMenu li:hover{
+    background-color: rgba(0,0,0,.5);
+    text-decoration: none;
+}
+.NavMenu a:hover{
+    text-decoration: none;
+}
+#divDanhMuc{
+    height: 30px;
+}
+.NavMenu{
+    float:right;
+}
+#Search{
+    float:left;
+    margin-left: 5%;
+}
+#Search input {
+    height: 0;   
+}
+#Search button{
+    width: 30px;
+    height: 30px;
+    padding: 0 10px 0 10px;
+    background-color: #14A19A;
+}
+#Search button:hover{
+    background-color: rgba(0, 0, 0, .5);
+}
+/*CSS cho Nivo Slider*/
+#slider{
+    float: right;
+    width: 900px;
+    height: 360px;
+}
+#divMenuLeft{
+    /*float: left;*/
+}
+
+#NhaXuatBan{
+    float:left;
+    width: 30%;
+}
+#NhaXuatBan .item{
+    width: 100%;
+}
+#SachTrungBay{
+    float: right;
+    width: 70%;
+}
+
+

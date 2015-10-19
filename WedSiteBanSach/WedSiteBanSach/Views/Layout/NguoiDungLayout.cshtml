@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/NguoiDungCSSLayout/fonts.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungCSSLayout/screen.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungCSSLayout/NguoiDungCSSLayout.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.pack.js"></script>
+    <link href="~/NivoSlider/nivo-slider.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+                controlNav: false,
+                prevText: '',                 // Prev directionNav text
+                nextText: '',
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div id="bodi">
+        <section class="blank">
+            <div class="flash">
+                <div class="DangKyDangNhap">
+                    @Html.Action("GioHangPartial", "GioHang")
+                    <i class="fa fa-user"></i>
+                    @Html.ActionLink("Đăng ký", "DangKy", null, htmlAttributes: new { @class = "DangKy" })
+                    <i class="fa fa-sign-in"></i>
+                    @Html.ActionLink("Đăng Nhập", "DangNhap", null, htmlAttributes: new { @class = "DangNhap" })
+                </div>
+            </div>
+
+            <div class="flash success" id="divDanhMuc">
+                <div id="Search">
+                    @using (@Html.BeginForm())
+                    {
+                        @Html.TextBox("txtKeyWord", "", htmlAttributes: new { @class = "txtKeyWord", @placeholder = "Nhập từ khóa cần tìm" })
+                        <button type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    }
+                </div>
+                <ul class="NavMenu">
+                    @Html.ActionLink("Trang chủ","Index","Home")
+                    <li><a href="#"> Giới thiệu </a></li>
+                    <li><a href="#"> Liên hệ </a></li>
+                    <li><a href="#"> Hướng dẫn </a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <div id="divMenuLeft">
+                <div class="activity">
+                    @* Chèn partial view cho phần sách mới *@
+                    @Html.Action("SachMoiPartial", "Sach")                   
+                </div>
+
+                <div id="slider" class="nivoSlider">
+                    <img src="~/Images/images1.jpg" />
+                    <img src="~/Images/images.jpg" />
+                    <img src="~/Images/index.jpg" />
+                </div>
+                
+            </div>
+            <div style="clear:both"></div>
+        </section>
+        <div id="NoiDung">
+            @RenderBody();
+        </div>
+        <section>@* Chủ đề *@
+            @Html.Action("ChuDePartial","ChuDe")
+        </section>
+        @* Div nhà xuất bản *@
+        <section class="blank items">
+            @Html.Action("NhaXuatBanPartial","NhaXuatBan")
+                
+                @RenderSection("NoiDungBenPhai", false)
+                <div id="SachTrungBay">
+                    
+                </div>
+        </section>
+    </div>
+</body>
+</html>

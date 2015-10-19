@@ -1,0 +1,18 @@
+﻿#sanPham{
+    float: left;
+    width: 450px;
+    margin-bottom: 100px;
+    margin-right: 10px;
+}
+#divBody{
+    margin-left: 100px;
+}
+#xemchitiet{
+    margin-left: 500px;
+}
+#gia{
+    color:#e8ae13;
+}
+#tenSach{
+    text-align:left;
+}

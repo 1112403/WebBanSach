@@ -1,0 +1,66 @@
+﻿@using WedSiteBanSach.Models
+@model List<GioHang>
+
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+<style>
+    #divMenuLeft {
+        display: none;
+    }
+
+    #divGioHang {
+        margin-left: 50px;
+    }
+    table, th,td {
+        border:solid 1px;
+        padding: 7px;
+    }
+</style>
+
+<h2 style="text-align:center">Giỏ hàng</h2>
+<div id="divGioHang">
+    <table>
+        <tr>
+            <th>Mã sách</th>
+            <th>Tên sách</th>
+            <th>Ảnh bìa</th>
+            <th>Đơn giá</th>
+            <th>Số lượng</th>
+            <th>Tiền</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.iMaSach</td>
+                <td>@item.sTenSach</td>
+                <td><img src="@Url.Content("~/HinhAnhSP/" + item.sAnhBia)" width="50" height="50" /> </td>
+                <td>@item.dDonGia</td>
+                <td>@item.iSoLuong</td>
+                <td>@item.dThanhTien</td>
+
+            </tr>
+        }
+        
+        <tr>
+            <td colspan="6" style="text-align:right">
+                @Html.ActionLink("Chỉnh sửa giỏ hàng", "SuaGioHang")
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6" style="text-align:right">
+                @using (Html.BeginForm("DatHang","GioHang"))
+                {
+                    <button type="submit">Đặt hàng</button>
+                }
+                
+            </td>
+        </tr>
+    </table>
+    
+</div>
+
+

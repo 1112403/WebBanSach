@@ -1,0 +1,17 @@
+﻿@using WedSiteBanSach.Models;
+@model List<NhaXuatBan>
+
+<div id="NhaXuatBan">
+    <div class="item">
+        <img src="http://lorempixel.com/400/300/" alt="Image">
+
+        <div class="item-info">
+            @{
+                foreach(var item in Model)
+                {
+                    <p>@item.TenNXB</p>
+                }
+            }
+        </div>
+    </div>
+</div>

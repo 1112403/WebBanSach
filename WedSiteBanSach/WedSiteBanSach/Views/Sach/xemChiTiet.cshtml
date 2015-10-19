@@ -1,0 +1,56 @@
+﻿@using WedSiteBanSach.Models;
+<link href="~/Content/TrangChuCSS.css" rel="stylesheet" />
+@model Sach
+@{
+    ViewBag.Title = "Thông tin chi tiết sách";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+<style>
+    #anhBia {
+        float: left;
+        height:500px;
+    }
+
+    #sanPham {
+        width: 700px;
+    }
+
+    #tenSach {
+        font-size: 30px;
+        font-family: sans-serif;
+        color: red;
+    }
+
+    #divMenuLeft {
+        display: none;
+    }
+</style>
+<h2>Xem chi tiết sách</h2>
+@section NoiDungBenPhai{
+    <div id="xemChiTiet">
+        <div id="sanPham">
+            <div id="anhBia"><img src="@Url.Content("~/HinhAnhSP/" + @Model.AnhBia)" /></div>
+            <div id="tenSach">@Model.TenSach</div>
+            <div id="chuDe">
+                Chủ đề: @ViewBag.TenChuDe
+            </div>
+            <div>
+                Nhà xuất bản: @ViewBag.NXB
+            </div>
+            <div>
+                Tóm tắt nội dung: @Model.MoTa
+            </div>
+            <div id="gia">Đơn giá: @string.Format("{0:0,0} VND", @Model.GiaBan)</div>
+            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSach = Model.MaSach, @strURL = Request.Url }))
+            {
+                <div>
+                    <button type="submit" style="color:white; background-color:red">
+                        Mua hàng <i class="fa fa-shopping-cart"></i>
+                    </button>
+                </div>
+            }
+
+        </div>
+        <div style="clear:both"></div>
+    </div>
+}
