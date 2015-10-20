@@ -198,6 +198,8 @@
     <Compile Include="Models\KhachHang.cs">
       <DependentUpon>QuanLyBanSachModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metadata\KhachHang.metadata.cs" />
+    <Compile Include="Models\Metadata\Sach.metadata.cs" />
     <Compile Include="Models\NhaXuatBan.cs">
       <DependentUpon>QuanLyBanSachModel.tt</DependentUpon>
     </Compile>
@@ -585,6 +587,7 @@
     <Content Include="Views\GioHang\SuaGioHang.cshtml" />
     <Content Include="Views\Layout\AdminLayout.cshtml" />
     <Content Include="Views\QuanLySanPham\Index.cshtml" />
+    <Content Include="Views\QuanLySanPham\ThemMoi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
