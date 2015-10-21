@@ -78,9 +78,9 @@
             @Html.DisplayFor(modelItem => item.NhaXuatBan.TenNXB)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "ChinhSua", new { @iMaSach = item.MaSach}) |
+            @Html.ActionLink("Details", "HienThi", new { @iMaSach = item.MaSach }) |
+            @Html.ActionLink("Delete", "XoaSach", new { @iMaSach = item.MaSach })
         </td>
     </tr>
     i++;

@@ -69,5 +69,52 @@ namespace WedSiteBanSach.Controllers
 
             return View();
         }
+
+        //Delete a book
+        public ActionResult XoaSach(int iMaSach)
+        {
+            var sach = db.Saches.Find(iMaSach);
+            db.Saches.Remove(sach);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        //Edit a book
+        [HttpGet]
+        public ActionResult ChinhSua(int iMaSach)
+        {
+            Sach sach = db.Saches.SingleOrDefault(n => n.MaSach == iMaSach);
+            if (sach == null)
+                return HttpNotFound();
+            ViewBag.MaChuDe = new SelectList(db.ChuDes.ToList(), "MaChuDe", "TenChuDe",sach.MaChuDe);
+            ViewBag.MaNXB = new SelectList(db.NhaXuatBans.ToList(), "MaNXB", "TenNXB",sach.MaNXB);
+
+            return View(sach);
+        }
+
+        [HttpPost]
+        public ActionResult ChinhSua(Sach sach)
+        {
+            if(ModelState.IsValid)
+            {
+                db.Entry(sach).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+            ViewBag.MaChuDe = new SelectList(db.ChuDes.ToList(), "MaChuDe", "TenChuDe", sach.MaChuDe);
+            ViewBag.MaNXB = new SelectList(db.NhaXuatBans.ToList(), "MaNXB", "TenNXB", sach.MaNXB);
+            return View(sach);
+        }
+
+        //View detail of a book
+        public ActionResult HienThi(int iMaSach)
+        {
+            Sach sach = db.Saches.SingleOrDefault(n => n.MaSach == iMaSach);
+            if(sach == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(sach);
+        }
 	}
 }

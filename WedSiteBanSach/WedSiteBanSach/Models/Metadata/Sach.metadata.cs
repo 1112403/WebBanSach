@@ -33,7 +33,7 @@ namespace WedSiteBanSach.Models
             [Display(Name = "Số lượng tồn")]
             public Nullable<int> SoLuongTon { get; set; }
 
-            [Display(Name = "Mã chủ đề")]
+            [Display(Name = "Chủ đề")]
             public Nullable<int> MaChuDe { get; set; }
 
             [Display(Name = "Nhà Xuất Bản")]
